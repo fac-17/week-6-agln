@@ -1,18 +1,20 @@
-const handlers = require(".handler");
+const { handleHome, handlePublic, handleQuery } = require("./handler");
 
 const router = (req, res) => {
-  if (req.url === "/") {
-    req.url = "/public/index.html";
+  const endpoint = req.url;
+
+  if (endpoint === "/") {
+    handleHome(req, res, endpoint);
+  } else if (endpoint.indexOf("public") !== -1) {
+    handlePublic(req, res, endpoint);
+  } else if(endpoint.startsWith("/query?=")) {
+    handleQuery(req, res, endpoint);
+  }else {
+    res.writeHead(404);
+    res.end(
+      `<h1>404: Page Not Found</h1>`
+    );
   }
-  if (req.url.startsWith("/public")) {
-  // PUT PUBLIC HANDLER HERE
-  }
-  else if (req.url.startsWith("")) {
-    // PUT OTHER HANDLERS FOR FRONT API CALL HERE
-  }
-  else {
-    // PUT 404 HANDLER HERE
-  }
-}
+};
 
 module.exports = router;
