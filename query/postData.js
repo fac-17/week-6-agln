@@ -14,4 +14,4 @@ const postData = (warrior_name, warrior_c1, warrior_c2, warrior_c3, cb) => {
   );
 };
 
-module.export = postData;
+module.exports = postData;
