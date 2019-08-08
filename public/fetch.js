@@ -24,6 +24,7 @@ const domRequest = url => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       responseOutput = JSON.parse(xhr.responseText);
       resToFrontEnd(responseOutput);
+      console.log(responseOutput);
     }
   };
   xhr.open("GET", url, true);

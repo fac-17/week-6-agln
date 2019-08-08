@@ -43,21 +43,21 @@ const handlePublic = (req, res, endpoint) => {
 };
 
 let handleQuery = (req, res) => {
-  const input = req.url.split("=")[1];
+  const input = req.url.split("=")[1].split('$').join('').split('{').join('').split('}').join('').split('&');
   // validate our data
-  let warrior_name = url.split("=")[1].split('$').join('').split('{').join('').split('}').join('').split('&')[0];
-  let warrior_c1 = url.split("=")[1].split('$').join('').split('{').join('').split('}').join('').split('&')[1];
-  let warrior_c2 = url.split("=")[1].split('$').join('').split('{').join('').split('}').join('').split('&')[2];
-  let warrior_c3 = url.split("=")[1].split('$').join('').split('{').join('').split('}').join('').split('&')[3];
-  postData = (warrior_name, warrior_c1, warrior_c2, warrior_c3, (err, res) => {
+  let warrior_name = input[0];
+  let warrior_c1 = input[1];
+  let warrior_c2 = input[2];
+  let warrior_c3 = input[3];
+  postData (warrior_name, warrior_c1, warrior_c2, warrior_c3, err => {
     if (err) {
     res.writeHead(404, { "content-type": "text/html" });
     res.end("<h1>404: Page Not Found</h1>");
   } else {
     res.writeHead(200, { "content-type": "text/html" });
-    res.end("Success");
+    res.end(JSON.stringify("idunno"));
   }
-  })
+});
 };
 
 
