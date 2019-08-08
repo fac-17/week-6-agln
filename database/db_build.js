@@ -3,7 +3,11 @@ const dbConnection = require("./db_connection");
 
 const sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 
-dbConnection.query(sql, (err, res) => {
-  if (err) throw err;
-  console.log("Warriors table is created: ", res);
-});
+const runDbBuild = cb => {
+  dbConnection.query(sql, (err, res) => {
+    if (err) throw err;
+    console.log("Warriors table is created: ", res);
+  });
+};
+
+module.exports = runDbBuild;
