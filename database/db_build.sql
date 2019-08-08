@@ -27,4 +27,5 @@ INSERT INTO glans (glan_name) VALUES ('jester');
 INSERT INTO glans (glan_name) VALUES ('salammbo');
 INSERT INTO glans (glan_name) VALUES ('rooster');
 
+
 COMMIT;
