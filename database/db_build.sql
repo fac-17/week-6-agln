@@ -14,4 +14,16 @@ INSERT INTO warriors (warrior_name, warrior_c1, warrior_c2, warrior_c3) VALUES('
 INSERT INTO warriors (warrior_name, warrior_c1, warrior_c2, warrior_c3) VALUES('beardedWizard', 1, 0, 0);
 INSERT INTO warriors (warrior_name, warrior_c1, warrior_c2, warrior_c3) VALUES('glansFromFrance', 1, 1, 1);
 
+
+DROP TABLE IF EXIST glans (
+
+  glan_id SERIAL PRIMARY KEY,
+  glan_name VARCHAR(100) NOT NULL,
+);
+
+INSERT INTO glans (glan_name) VALUES ('oaf');
+INSERT INTO glans (glan_name) VALUES ('jester');
+INSERT INTO glans (glan_name) VALUES ('salammbo');
+INSERT INTO glans (glan_name) VALUES ('rooster');
+
 COMMIT;
