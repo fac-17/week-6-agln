@@ -1,6 +1,8 @@
 BEGIN;
 
-DROP TABLE IF EXIST warriors (
+DROP TABLE IF EXISTS warriors, glans;
+
+CREATE TABLE IF NOT EXISTS warriors (
 
 warrior_id SERIAL PRIMARY KEY,
 warrior_name VARCHAR (20) NOT NULL,
@@ -15,10 +17,9 @@ INSERT INTO warriors (warrior_name, warrior_c1, warrior_c2, warrior_c3) VALUES('
 INSERT INTO warriors (warrior_name, warrior_c1, warrior_c2, warrior_c3) VALUES('glansFromFrance', 1, 1, 1);
 
 
-DROP TABLE IF EXIST glans (
-
+CREATE TABLE IF NOT EXISTS glans (
   glan_id SERIAL PRIMARY KEY,
-  glan_name VARCHAR(100) NOT NULL,
+  glan_name VARCHAR(100) NOT NULL
 );
 
 INSERT INTO glans (glan_name) VALUES ('oaf');
