@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXIST warriors (
+DROP TABLE IF EXISTS warriors (
 
 warrior_id SERIAL PRIMARY KEY,
 warrior_name VARCHAR (20) NOT NULL,
