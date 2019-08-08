@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="public/style.css" />
+    <link rel="shortcut icon" type="image/icon" href="public/favicon.ico"/>
     <title>Glash of Glans</title>
   </head>
   <body>
@@ -15,20 +16,21 @@
         <label for="membername">Warrior Name: </label>
         <input class="form__input" type= "text" id="membername" /></br>
         <label for="wise">Wise</label>
-        <input type="radio" name="wisdom" value="wise" id="wise">
+        <input type="radio" name="wisdom" value="1" id="wise">
         <label for="foolish">Foolish</label>
-        <input type="radio" name="wisdom" value="foolish" id="foolish">
+        <input type="radio" name="wisdom" value="0" id="foolish">
         <label for="brave">Brave</label>
-        <input type="radio" name="courage" value="brave" id="brave">
+        <input type="radio" name="courage" value="1" id="brave">
         <label for="cowardly">Cowardly</label>
-        <input type="radio" name="courage" value="cowardly" id="cowardly">
+        <input type="radio" name="courage" value="0" id="cowardly">
         <label for="magical">Magical</label>
-        <input type="radio" name="wizardry" value="magical" id="magical">
+        <input type="radio" name="wizardry" value="1" id="magical">
         <label for="muggle">Muggle</label>
-        <input type="radio" name="wizardry" value="muggle" id="muggle">
+        <input type="radio" name="wizardry" value="0" id="muggle">
         <input class="form__submit" type="submit" value="Generate Glan">
       </form>
     </section>
-    <script src="dom.js"></script>
+    <script src="public/dom.js"></script>
+    <script src="public/fetch.js"></script>
   </body>
 </html>
