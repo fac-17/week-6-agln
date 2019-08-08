@@ -8,7 +8,6 @@ console.log(endpoint);
   } else if (endpoint.indexOf("public") !== -1) {
     handlePublic(req, res, endpoint);
   } else if(endpoint.startsWith("/query?=")) {
-    console.log("inside handlequery");
     handleQuery(req, res);
   }else {
     res.writeHead(404);
