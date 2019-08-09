@@ -15,15 +15,15 @@ submit.addEventListener("click", e => {
   domRequest(url);
 });
 
-const domRequest = url => {
+const domRequest = (url, name) => {
   let xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       responseOutput = JSON.parse(xhr.responseText);
-      console.log(responseOutput[0].glan_name);
+      console.log(responseOutput);
 
-      responseOutput.forEach((e, i)=> {
+      responseOutput.forEach((e)=> {
         if(e.warrior_name === name) {
           alert(e.glan_name);
         }
@@ -36,5 +36,8 @@ const domRequest = url => {
 
 let getGlan = document.getElementById("getGlan");
 getGlan.onclick = function() {
-  domRequest("/getGlan");
+
+  let name = document.querySelector("#membername").value;
+  console.log(name)
+  domRequest("/getGlan", name);
 };
