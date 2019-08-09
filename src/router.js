@@ -1,4 +1,4 @@
-const { handleHome, handlePublic, handleQuery } = require("./handler");
+const { handleHome, handlePublic, handleQuery, getGlan } = require("./handler");
 
 const router = (req, res) => {
   const endpoint = req.url;
@@ -9,7 +9,9 @@ console.log(endpoint);
     handlePublic(req, res, endpoint);
   } else if(endpoint.startsWith("/query?=")) {
     handleQuery(req, res);
-  }else {
+  } else if(endpoint.startsWith("/getGlan")) {
+    getGlan(req, res);
+  } else {
     res.writeHead(404);
     res.end(
       `<h1>404: Page Not Found</h1>`

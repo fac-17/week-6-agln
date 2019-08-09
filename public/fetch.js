@@ -21,8 +21,20 @@ const domRequest = url => {
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       responseOutput = JSON.parse(xhr.responseText);
+      console.log(responseOutput[0].glan_name);
+
+      responseOutput.forEach((e, i)=> {
+        if(e.warrior_name === name) {
+          alert(e.glan_name);
+        }
+      })
     }
   };
-  xhr.open("POST", url, true);
+  xhr.open("GET", url, true);
   xhr.send();
+};
+
+let getGlan = document.getElementById("getGlan");
+getGlan.onclick = function() {
+  domRequest("/getGlan");
 };

@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 const postData = require("../query/postData");
+const getData = require("../query/getData");
 
 const handleHome = (req, res) => {
   const filePath = path.join(__dirname, "..", "public", "index.html");
@@ -68,4 +69,17 @@ let handleQuery = (req, res) => {
   });
 };
 
-module.exports = { handleHome, handlePublic, handleQuery };
+let getGlan = (req, res) => {
+  getData.getSum((error, result) => {
+    if (error) {
+      console.log("500, Get data error", error);
+      res.writeHead(500, "Content-Type:text/html");
+      res.end("<h1>Sorry, there was a problem getting the users<h1>");
+    } else {
+      res.writeHead(200, { "Content-Type": "application:json" });
+      res.end(JSON.stringify(result));
+    }
+  });
+};
+
+module.exports = { handleHome, handlePublic, handleQuery, getGlan };
