@@ -3,6 +3,8 @@ const path = require("path");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
+const postData = require("../query/postData");
+const getData = require("../query/getData");
 
 const handleHome = (req, res) => {
   const filePath = path.join(__dirname, "..", "public", "index.html");
@@ -42,7 +44,42 @@ const handlePublic = (req, res, endpoint) => {
 };
 
 let handleQuery = (req, res) => {
-  const input = req.url.split("=")[1];
+  const input = req.url
+    .split("=")[1]
+    .split("$")
+    .join("")
+    .split("{")
+    .join("")
+    .split("}")
+    .join("")
+    .split("&");
+  // validate our data
+  let warrior_name = input[0];
+  let warrior_c1 = input[1];
+  let warrior_c2 = input[2];
+  let warrior_c3 = input[3];
+
+  postData(warrior_name, warrior_c1, warrior_c2, warrior_c3, err => {
+    if (err) {
+      console.log("Something went wrong with your submission");
+    } else {
+      res.writeHead(200, { "content-type": "text/html" });
+      res.end(JSON.stringify(`${warrior_name}`));
+    }
+  });
 };
 
-module.exports = { handleHome, handlePublic, handleQuery };
+let getGlan = (req, res) => {
+  getData.getSum((error, result) => {
+    if (error) {
+      console.log("500, Get data error", error);
+      res.writeHead(500, "Content-Type:text/html");
+      res.end("<h1>Sorry, there was a problem getting the users<h1>");
+    } else {
+      res.writeHead(200, { "Content-Type": "application:json" });
+      res.end(JSON.stringify(result));
+    }
+  });
+};
+
+module.exports = { handleHome, handlePublic, handleQuery, getGlan };

@@ -4,7 +4,6 @@ let submit = document.querySelector("#submit__button");
 submit.addEventListener("click", e => {
   let name = document.querySelector("#membername").value;
   let listOfCategories = document.querySelectorAll(".radioButton");
-  console.log(listOfCategories);
   let selected = [];
   listOfCategories.forEach(element => {
     if (element.checked === true) {
@@ -13,7 +12,6 @@ submit.addEventListener("click", e => {
   });
 
   const url = `/query?=${name}&${selected[0]}&${selected[1]}&${selected[2]}`;
-  console.log(url);
   domRequest(url);
 });
 
@@ -23,15 +21,20 @@ const domRequest = url => {
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
       responseOutput = JSON.parse(xhr.responseText);
-      resToFrontEnd(responseOutput);
+      console.log(responseOutput[0].glan_name);
+
+      responseOutput.forEach((e, i)=> {
+        if(e.warrior_name === name) {
+          alert(e.glan_name);
+        }
+      })
     }
   };
   xhr.open("GET", url, true);
   xhr.send();
 };
 
-const resToFrontEnd = json => {
-  //Removes old data
-  //Case if results are NULL
-  // Case populating the dom
+let getGlan = document.getElementById("getGlan");
+getGlan.onclick = function() {
+  domRequest("/getGlan");
 };

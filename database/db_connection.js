@@ -27,5 +27,5 @@ if (password) {
   options.password = password;
 }
 
-options.ssql = options.host !== "localhost";
+options.ssl = options.host !== "localhost";
 module.exports = new Pool(options);

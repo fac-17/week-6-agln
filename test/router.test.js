@@ -36,7 +36,7 @@ tape("Public route should render css file", t => {
 //Public route - javascript
 tape("Public route should render js", t => {
   supertest(router)
-    .get("/public/dom.js")
+    .get("/public/fetch.js")
     .expect(200)
     .expect("Content-type", /javascript/)
     .end((err, res) => {
